@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>Chat WebSocket</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script src="message.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body onload="disconnect()">
+
+<div>
+
+
+    <div>
+        <input type="text" id="from" placeholder="Choose a nickname"/>
+    </div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+    <br />
+    <div id="conversationDiv">
+        <label for="chat">Chat</label>
+        <input type="chat" id="chat" placeholder="Write a message..."/>
+        <button id="sendMessage">Chat</button>
+        <h3>Chat Response</h3>
+        <p id="chat_response"></p>
+
+        <label for="command">Command</label>
+        <input type="command" id="command" placeholder="Write a message..."/>
+        <button id="sendCommand">Send Command</button>
+        <h3>Private Response</h3>
+        <p id="private_response"></p>
+    </div>
+</div>
+
+</body>
+</html>
