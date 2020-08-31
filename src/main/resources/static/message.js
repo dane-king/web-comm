@@ -10,7 +10,9 @@ const setConnected=(connected) => {
 	getElement('disconnect').disabled = !connected;
 	getElement('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
 	getElement('chat_response').innerHTML = '';
-	getElement('private_response').innerHTML = '';
+	getElement('private_request').innerHTML = '';
+    getElement('private_response').innerHTML = '';
+
 }
 
 const setupButtons = () => {
@@ -33,6 +35,7 @@ function connect() {
 		setConnected(true);
 		console.log('Connected: ' + frame);
 		stompClient.subscribe('/topic/messages', showMessageOutput('chat_response'));
+		stompClient.subscribe('/user/queue/request', showMessageOutput('private_request'));
 		stompClient.subscribe('/user/queue/response', showMessageOutput('private_response'));
 	});
 }
