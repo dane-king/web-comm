@@ -22,7 +22,7 @@ public class CommandController {
     @SendToUser("/queue/request")
     public OutputMessage commandRequest(SimpMessageHeaderAccessor sha, Message message) {
         String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
-        this.applicationEventPublisher.publishEvent(new CommandEvent(this, sha.getSessionId()));
+        this.applicationEventPublisher.publishEvent(new CommandEvent(this, sha.getUser().getName()));
         return new OutputMessage(message.getFrom(), "Received:" + message.getText() + ",to:" + sha.getSessionId(), time);
     }
 
